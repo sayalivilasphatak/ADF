@@ -1,0 +1,159 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfdevdubyproject02"
+		},
+		"DS_MULTIPLECSV_PARQUET_connectionString": {
+			"value": ""
+		},
+		"LS_BLOBCSV_ADLSPARQUET_connectionString": {
+			"value": ""
+		},
+		"LS_INPUTCSV_OUTPUTPARQUET_accountKey": {
+			"value": ""
+		},
+		"LS_MULTIPLECSV_PARQUET_connectionString": {
+			"value": ""
+		},
+		"LS_MULTIPLEINPUT_OUTPUT_accountKey": {
+			"value": ""
+		},
+		"LS_RESTAPI_ADLSPARQUET_accountKey": {
+			"value": ""
+		},
+		"LS_REST_ADLS1_accountKey": {
+			"value": ""
+		},
+		"LS_SP_INSERTINPUT_password": {
+			"value": ""
+		},
+		"LS_SP_PROCEDURE_password": {
+			"value": ""
+		},
+		"LS_SQL_ADLS_accountKey": {
+			"value": ""
+		},
+		"LS_SQL_AUDIT_connectionString": {
+			"value": ""
+		},
+		"LS_SQL_AUDITLOG_password": {
+			"value": ""
+		},
+		"LS_SQL_MIG_password": {
+			"value": ""
+		},
+		"LS_SQL_MIGR_accountKey": {
+			"value": ""
+		},
+		"LS_SQL_MIGRATION_password": {
+			"value": ""
+		},
+		"LS_SQL_PARQUET_accountKey": {
+			"value": ""
+		},
+		"LS_STOREDPROCEDURE_password": {
+			"value": ""
+		},
+		"LS_STPCD_password": {
+			"value": ""
+		},
+		"LS_INPUTCSV_OUTPUTPARQUET_properties_typeProperties_url": {
+			"value": "https://adlsdevdubyproject02.dfs.core.windows.net/"
+		},
+		"LS_MULTIPLEINPUT_OUTPUT_properties_typeProperties_url": {
+			"value": "https://adlsdevdubyproject02.dfs.core.windows.net/"
+		},
+		"LS_RESTAPI_ADLSPARQUET_properties_typeProperties_url": {
+			"value": "https://adlsdevdubyproject02.dfs.core.windows.net/"
+		},
+		"LS_RESTRESOURCE_properties_typeProperties_url": {
+			"value": "https://retoolapi.dev/5yDVOt/data"
+		},
+		"LS_REST_ADLS_properties_typeProperties_url": {
+			"value": "https://retoolapi.dev/5yDVOt/data"
+		},
+		"LS_REST_ADLS1_properties_typeProperties_url": {
+			"value": "https://adlsdevdubyproject02.dfs.core.windows.net/"
+		},
+		"LS_SP_INSERTINPUT_properties_typeProperties_server": {
+			"value": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_SP_INSERTINPUT_properties_typeProperties_database": {
+			"value": "master"
+		},
+		"LS_SP_INSERTINPUT_properties_typeProperties_userName": {
+			"value": "sayaliphatak"
+		},
+		"LS_SP_PROCEDURE_properties_typeProperties_server": {
+			"value": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_SP_PROCEDURE_properties_typeProperties_database": {
+			"value": "master"
+		},
+		"LS_SP_PROCEDURE_properties_typeProperties_userName": {
+			"value": "sayaliphatak"
+		},
+		"LS_SQL_ADLS_properties_typeProperties_url": {
+			"value": "https://adlsdevdubyproject02.dfs.core.windows.net/"
+		},
+		"LS_SQL_AUDITLOG_properties_typeProperties_server": {
+			"value": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_SQL_AUDITLOG_properties_typeProperties_database": {
+			"value": "master"
+		},
+		"LS_SQL_AUDITLOG_properties_typeProperties_userName": {
+			"value": "sayaliphatak"
+		},
+		"LS_SQL_MIG_properties_typeProperties_server": {
+			"value": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_SQL_MIG_properties_typeProperties_database": {
+			"value": "AdventureWorks2019"
+		},
+		"LS_SQL_MIG_properties_typeProperties_userName": {
+			"value": "sayaliphatak"
+		},
+		"LS_SQL_MIGR_properties_typeProperties_url": {
+			"value": "https://adlsdevdubyproject02.dfs.core.windows.net/"
+		},
+		"LS_SQL_MIGRATION_properties_typeProperties_server": {
+			"value": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_SQL_MIGRATION_properties_typeProperties_database": {
+			"value": "AdventureWorks2019"
+		},
+		"LS_SQL_MIGRATION_properties_typeProperties_userName": {
+			"value": "sayaliphatak"
+		},
+		"LS_SQL_PARQUET_properties_typeProperties_url": {
+			"value": "https://adlsdevdubyproject02.dfs.core.windows.net/"
+		},
+		"LS_STOREDPROCEDURE_properties_typeProperties_server": {
+			"value": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_STOREDPROCEDURE_properties_typeProperties_database": {
+			"value": "master"
+		},
+		"LS_STOREDPROCEDURE_properties_typeProperties_userName": {
+			"value": "sayaliphatak"
+		},
+		"LS_STPCD_properties_typeProperties_server": {
+			"value": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_STPCD_properties_typeProperties_database": {
+			"value": "master"
+		},
+		"LS_STPCD_properties_typeProperties_userName": {
+			"value": "sayaliphatak"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

@@ -1,0 +1,1098 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfdevdubyproject02"
+		},
+		"LS_SP_INSERTINPUT_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SP_INSERTINPUT'"
+		},
+		"LS_SP_PROCEDURE_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SP_PROCEDURE'"
+		},
+		"LS_SQL_AUDITLOG_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL_AUDITLOG'"
+		},
+		"LS_SQL_MIG_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL_MIG'"
+		},
+		"LS_SQL_MIGRATION_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL_MIGRATION'"
+		},
+		"LS_STOREDPROCEDURE_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_STOREDPROCEDURE'"
+		},
+		"LS_STPCD_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_STPCD'"
+		},
+		"LS_SP_INSERTINPUT_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_SP_INSERTINPUT_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "master"
+		},
+		"LS_SP_INSERTINPUT_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sayaliphatak"
+		},
+		"LS_SP_PROCEDURE_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_SP_PROCEDURE_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "master"
+		},
+		"LS_SP_PROCEDURE_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sayaliphatak"
+		},
+		"LS_SQL_AUDITLOG_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_SQL_AUDITLOG_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "master"
+		},
+		"LS_SQL_AUDITLOG_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sayaliphatak"
+		},
+		"LS_SQL_MIG_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_SQL_MIG_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2019"
+		},
+		"LS_SQL_MIG_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sayaliphatak"
+		},
+		"LS_SQL_MIGRATION_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_SQL_MIGRATION_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2019"
+		},
+		"LS_SQL_MIGRATION_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sayaliphatak"
+		},
+		"LS_STOREDPROCEDURE_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_STOREDPROCEDURE_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "master"
+		},
+		"LS_STOREDPROCEDURE_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sayaliphatak"
+		},
+		"LS_STPCD_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DESKTOP-06NRSR8\\SQLEXPRESS"
+		},
+		"LS_STPCD_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "master"
+		},
+		"LS_STPCD_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sayaliphatak"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_REST_ADLS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_REST_ADLS1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "data_d2547d99-712b-4e1c-b273-faf5d70aab12_650ccc84-382a-45b1-8460-9fcb454511a9.parquet",
+						"fileSystem": "restapioutput"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_SQL_ADLS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_ADLS",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "sqloutput"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_SQL_AUDIT')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AUDIT",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "input"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "SIC_Code",
+						"type": "UTF8"
+					},
+					{
+						"name": "Description",
+						"type": "UTF8"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_SQL_MIGR')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_MIGR",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "sqloutput"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "BusinessEntityID",
+						"type": "INT32"
+					},
+					{
+						"name": "PersonType",
+						"type": "UTF8"
+					},
+					{
+						"name": "NameStyle",
+						"type": "BOOLEAN"
+					},
+					{
+						"name": "Title",
+						"type": "UTF8"
+					},
+					{
+						"name": "FirstName",
+						"type": "UTF8"
+					},
+					{
+						"name": "MiddleName",
+						"type": "UTF8"
+					},
+					{
+						"name": "LastName",
+						"type": "UTF8"
+					},
+					{
+						"name": "Suffix",
+						"type": "UTF8"
+					},
+					{
+						"name": "EmailPromotion",
+						"type": "INT32"
+					},
+					{
+						"name": "AdditionalContactInfo",
+						"type": "UTF8"
+					},
+					{
+						"name": "Demographics",
+						"type": "UTF8"
+					},
+					{
+						"name": "rowguid",
+						"type": "UTF8"
+					},
+					{
+						"name": "ModifiedDate",
+						"type": "INT96"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_SQL_PARQUET')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_PARQUET",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "sqloutput"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_SP_INSERTINPUT')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_SP_INSERTINPUT_properties_typeProperties_server')]",
+					"database": "[parameters('LS_SP_INSERTINPUT_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('LS_SP_INSERTINPUT_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_SP_INSERTINPUT_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_SP_PROCEDURE')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_SP_PROCEDURE_properties_typeProperties_server')]",
+					"database": "[parameters('LS_SP_PROCEDURE_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('LS_SP_PROCEDURE_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_SP_PROCEDURE_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_SQL_AUDITLOG')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_SQL_AUDITLOG_properties_typeProperties_server')]",
+					"database": "[parameters('LS_SQL_AUDITLOG_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('LS_SQL_AUDITLOG_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_SQL_AUDITLOG_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_SQL_MIG')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_SQL_MIG_properties_typeProperties_server')]",
+					"database": "[parameters('LS_SQL_MIG_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('LS_SQL_MIG_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_SQL_MIG_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_SQL_MIGRATION')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_SQL_MIGRATION_properties_typeProperties_server')]",
+					"database": "[parameters('LS_SQL_MIGRATION_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('LS_SQL_MIGRATION_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_SQL_MIGRATION_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_STOREDPROCEDURE')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_STOREDPROCEDURE_properties_typeProperties_server')]",
+					"database": "[parameters('LS_STOREDPROCEDURE_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('LS_STOREDPROCEDURE_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_STOREDPROCEDURE_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_STPCD')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_STPCD_properties_typeProperties_server')]",
+					"database": "[parameters('LS_STPCD_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('LS_STPCD_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_STPCD_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_INPUTCSV_OUTPUTPARQUET')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CPY_CSV_PARQUET",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "ParquetSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "ParquetWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_CSV_PARQUET",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_INPUTCSV_OUTPUTPARQUET",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2026-08-18T16:56:46Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_MULTIPLEINPUT_OUTPUT')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CPY_MULTIPLEINPUT_OUTPUT",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"wildcardFileName": "*",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "ParquetSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "ParquetWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_MULTIPLECSV_PARQUET",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_MULTIPLEINPUT_OUTPUT",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2026-08-18T16:56:47Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_RESTAPI_ADLS')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CPY_RESTAPI_ADLS",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:01:40",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "ParquetSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "ParquetWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['id']"
+										},
+										"sink": {
+											"name": "id"
+										}
+									},
+									{
+										"source": {
+											"path": "$['Sku']"
+										},
+										"sink": {
+											"name": "sku"
+										}
+									},
+									{
+										"source": {
+											"path": "$['TP 1']"
+										},
+										"sink": {
+											"name": "tp1"
+										}
+									},
+									{
+										"source": {
+											"path": "$['TP 2']"
+										},
+										"sink": {
+											"name": "tp2"
+										}
+									},
+									{
+										"source": {
+											"path": "$['index']"
+										},
+										"sink": {
+											"name": "index"
+										}
+									},
+									{
+										"source": {
+											"path": "$['Weight']"
+										},
+										"sink": {
+											"name": "weight"
+										}
+									},
+									{
+										"source": {
+											"path": "$['Catalog']"
+										},
+										"sink": {
+											"name": "catalog"
+										}
+									},
+									{
+										"source": {
+											"path": "$['MRP Old']"
+										},
+										"sink": {
+											"name": "mrpold"
+										}
+									},
+									{
+										"source": {
+											"path": "$['Ajio MRP']"
+										},
+										"sink": {
+											"name": "ajiomrp"
+										}
+									},
+									{
+										"source": {
+											"path": "$['Category']"
+										},
+										"sink": {
+											"name": "category"
+										}
+									},
+									{
+										"source": {
+											"path": "$['Style Id']"
+										},
+										"sink": {
+											"name": "styleid"
+										}
+									},
+									{
+										"source": {
+											"path": "$['Paytm MRP']"
+										},
+										"sink": {
+											"name": "paytmmrp"
+										}
+									},
+									{
+										"source": {
+											"path": "$['Amazon MRP']"
+										},
+										"sink": {
+											"name": "amazonmrp"
+										}
+									},
+									{
+										"source": {
+											"path": "$['Myntra MRP']"
+										},
+										"sink": {
+											"name": "myntramrp"
+										}
+									},
+									{
+										"source": {
+											"path": "$['Flipkart MRP']"
+										},
+										"sink": {
+											"name": "flipkartmrp"
+										}
+									},
+									{
+										"source": {
+											"path": "$['Limeroad MRP']"
+										},
+										"sink": {
+											"name": "limeroadmrp"
+										}
+									},
+									{
+										"source": {
+											"path": "$['Snapdeal MRP']"
+										},
+										"sink": {
+											"name": "snapdealmrp"
+										}
+									},
+									{
+										"source": {
+											"path": "$['Final MRP Old']"
+										},
+										"sink": {
+											"name": "finalmrpold"
+										}
+									},
+									{
+										"source": {
+											"path": "$['Amazon FBA MRP']"
+										},
+										"sink": {
+											"name": "amazonfbamrp"
+										}
+									}
+								]
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_RESTRESOURCE",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_RESTAPI_ADLSPARQUET",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2026-08-18T17:25:48Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_REST_ADLS')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "DLT_REST_ADLS",
+						"type": "Delete",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "DS_REST_ADLS",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"logStorageSettings": {
+								"linkedServiceName": {
+									"referenceName": "LS_REST_ADLS1",
+									"type": "LinkedServiceReference"
+								},
+								"path": "restapioutput"
+							},
+							"enableLogging": true,
+							"storeSettings": {
+								"type": "AzureBlobFSReadSettings",
+								"fileListPath": "restapioutput/data_d2547d99-712b-4e1c-b273-faf5d70aab12_650ccc84-382a-45b1-8460-9fcb454511a9.parquet",
+								"enablePartitionDiscovery": false
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2026-08-18T17:43:01Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_REST_ADLS')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_SP_INSERTINPUT')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CPY_SP_INSERTINPUT",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[InsertCustomer]",
+							"storedProcedureParameters": {
+								"CustomerID": {
+									"value": "101",
+									"type": "Int32"
+								},
+								"FirstName": {
+									"value": "Sayali",
+									"type": "String"
+								},
+								"LastName": {
+									"value": "Phatak",
+									"type": "String"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SP_INSERTINPUT",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2026-08-18T19:36:23Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_SP_INSERTINPUT')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_STOREDPROCEDURE')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CPY_STOREDPROCEDURE",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[InsertStudent]",
+							"storedProcedureParameters": {
+								"First_Name": {
+									"value": "Pranali",
+									"type": "String"
+								},
+								"Last_Name": {
+									"value": "Phatak",
+									"type": "String"
+								},
+								"StudentID": {
+									"value": "103",
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_STOREDPROCEDURE",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2026-08-20T14:03:01Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_STOREDPROCEDURE')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_ST_PROCEDURE')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CPY_ST_PROCEDURE",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[Insert_Students]",
+							"storedProcedureParameters": {
+								"firstName": {
+									"value": "Sayali",
+									"type": "String"
+								},
+								"lastName": {
+									"value": "Phatak",
+									"type": "String"
+								},
+								"studentID": {
+									"value": "101",
+									"type": "Int32"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_SP_PROCEDURE",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2026-08-24T15:19:43Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_SP_PROCEDURE')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_SQL_AUDITLOG')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_AUDITLOG",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "loadid",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tablename",
+						"type": "varchar"
+					},
+					{
+						"name": "loadstatus",
+						"type": "varchar"
+					},
+					{
+						"name": "dataread",
+						"type": "varchar"
+					},
+					{
+						"name": "errorid",
+						"type": "varchar"
+					},
+					{
+						"name": "errormessage",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "audit",
+					"table": "copylog"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_SQL_AUDITLOG')]"
+			]
+		}
+	]
+}
