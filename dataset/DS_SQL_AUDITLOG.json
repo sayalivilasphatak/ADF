@@ -1,0 +1,43 @@
+{
+	"name": "DS_SQL_AUDITLOG",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_AUDITLOG",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "loadid",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "tablename",
+				"type": "varchar"
+			},
+			{
+				"name": "loadstatus",
+				"type": "varchar"
+			},
+			{
+				"name": "dataread",
+				"type": "varchar"
+			},
+			{
+				"name": "errorid",
+				"type": "varchar"
+			},
+			{
+				"name": "errormessage",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "audit",
+			"table": "copylog"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

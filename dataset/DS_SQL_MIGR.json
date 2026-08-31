@@ -1,0 +1,73 @@
+{
+	"name": "DS_SQL_MIGR",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_MIGR",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "sqloutput"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "BusinessEntityID",
+				"type": "INT32"
+			},
+			{
+				"name": "PersonType",
+				"type": "UTF8"
+			},
+			{
+				"name": "NameStyle",
+				"type": "BOOLEAN"
+			},
+			{
+				"name": "Title",
+				"type": "UTF8"
+			},
+			{
+				"name": "FirstName",
+				"type": "UTF8"
+			},
+			{
+				"name": "MiddleName",
+				"type": "UTF8"
+			},
+			{
+				"name": "LastName",
+				"type": "UTF8"
+			},
+			{
+				"name": "Suffix",
+				"type": "UTF8"
+			},
+			{
+				"name": "EmailPromotion",
+				"type": "INT32"
+			},
+			{
+				"name": "AdditionalContactInfo",
+				"type": "UTF8"
+			},
+			{
+				"name": "Demographics",
+				"type": "UTF8"
+			},
+			{
+				"name": "rowguid",
+				"type": "UTF8"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "INT96"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

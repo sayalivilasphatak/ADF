@@ -1,0 +1,42 @@
+{
+	"name": "PL_REST_ADLS",
+	"properties": {
+		"activities": [
+			{
+				"name": "DLT_REST_ADLS",
+				"type": "Delete",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DS_REST_ADLS",
+						"type": "DatasetReference"
+					},
+					"logStorageSettings": {
+						"linkedServiceName": {
+							"referenceName": "LS_REST_ADLS1",
+							"type": "LinkedServiceReference"
+						},
+						"path": "restapioutput"
+					},
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"fileListPath": "restapioutput/data_d2547d99-712b-4e1c-b273-faf5d70aab12_650ccc84-382a-45b1-8460-9fcb454511a9.parquet",
+						"enablePartitionDiscovery": false
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-08-18T17:43:01Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

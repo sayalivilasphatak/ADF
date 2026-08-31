@@ -1,0 +1,44 @@
+{
+	"name": "PL_STOREDPROCEDURE",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPY_STOREDPROCEDURE",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[InsertStudent]",
+					"storedProcedureParameters": {
+						"First_Name": {
+							"value": "Pranali",
+							"type": "String"
+						},
+						"Last_Name": {
+							"value": "Phatak",
+							"type": "String"
+						},
+						"StudentID": {
+							"value": "103",
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_STOREDPROCEDURE",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-08-20T14:03:01Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

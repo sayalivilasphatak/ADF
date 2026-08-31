@@ -1,0 +1,19 @@
+{
+	"name": "DS_REST_ADLS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_REST_ADLS1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "data_d2547d99-712b-4e1c-b273-faf5d70aab12_650ccc84-382a-45b1-8460-9fcb454511a9.parquet",
+				"fileSystem": "restapioutput"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
